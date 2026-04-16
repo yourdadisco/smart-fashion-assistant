@@ -4,16 +4,15 @@
   "private": true,
   "main": "index.ts",
   "scripts": {
-    "dev": "netlify dev",
     "build": "tsc --noEmit",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "axios": "^1.6.0"
+    "axios": "^1.7.0"
   },
   "devDependencies": {
-    "@netlify/functions": "^2.0.0",
-    "@types/node": "^20.0.0",
+    "@netlify/functions": "^2.8.0",
+    "@types/node": "^20.11.0",
     "typescript": "^5.0.0"
   },
   "engines": {
