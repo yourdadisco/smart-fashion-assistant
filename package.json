@@ -2,20 +2,10 @@
   "name": "smart-fashion-assistant",
   "version": "0.1.0",
   "private": true,
-  "workspaces": [
-    "frontend",
-    "netlify/functions/*"
-  ],
   "scripts": {
-    "dev:frontend": "cd frontend && npm run dev",
-    "build:frontend": "cd frontend && npm run build",
-    "preview:frontend": "cd frontend && npm run preview",
     "dev": "cd frontend && npm run dev",
-    "build": "npm run build:frontend",
-    "preview": "npm run preview:frontend"
-  },
-  "devDependencies": {
-    "concurrently": "^8.2.0"
+    "build": "cd frontend && npm run build",
+    "preview": "cd frontend && npm run preview"
   },
   "engines": {
     "node": ">=18.0.0"

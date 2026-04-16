@@ -63,7 +63,7 @@ export const WeatherChart: React.FC<WeatherChartProps> = ({
                 labelFormatter={(label) => `日期: ${label}`}
               />
               <Legend />
-              {chart.series.map((series, i) => (
+              {chart.series.map((series, _) => (
                 <Line
                   key={series.dataKey}
                   type="monotone"
@@ -98,7 +98,7 @@ export const WeatherChart: React.FC<WeatherChartProps> = ({
                 labelFormatter={(label) => `日期: ${label}`}
               />
               <Legend />
-              {chart.series.map((series, i) => (
+              {chart.series.map((series, _) => (
                 <Bar
                   key={series.dataKey}
                   dataKey={series.dataKey}
@@ -129,7 +129,7 @@ export const WeatherChart: React.FC<WeatherChartProps> = ({
                 labelFormatter={(label) => `日期: ${label}`}
               />
               <Legend />
-              {chart.series.map((series, i) => (
+              {chart.series.map((series, _) => (
                 <Area
                   key={series.dataKey}
                   type="monotone"
@@ -144,7 +144,16 @@ export const WeatherChart: React.FC<WeatherChartProps> = ({
           )
 
         default:
-          return null
+          return (
+            <LineChart data={[]} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="value" stroke="#8884d8" strokeWidth={2} />
+            </LineChart>
+          )
       }
     }
 

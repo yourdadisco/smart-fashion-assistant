@@ -44,7 +44,7 @@ export const FashionRecommendationComponent: React.FC<FashionRecommendationProps
             <div>
               <Text type="secondary">材质: </Text>
               {layer.materials?.map((material: string, i: number) => (
-                <Tag key={i} color="blue" size="small">
+                <Tag key={i} color="blue">
                   {material}
                 </Tag>
               ))}
@@ -52,7 +52,7 @@ export const FashionRecommendationComponent: React.FC<FashionRecommendationProps
             <div style={{ marginTop: 8 }}>
               <Text type="secondary">颜色: </Text>
               {layer.colors?.map((color: string, i: number) => (
-                <Tag key={i} color="purple" size="small">
+                <Tag key={i} color="purple">
                   {color}
                 </Tag>
               ))}

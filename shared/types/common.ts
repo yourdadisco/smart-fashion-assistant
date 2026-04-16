@@ -1,5 +1,8 @@
 // 通用类型定义
 
+import type { CurrentWeather, ForecastData, WeatherAnalysis } from './weather'
+import type { FashionRecommendation } from './fashion'
+
 export interface ApiResponse<T = any> {
   success: boolean
   data?: T
@@ -41,6 +44,6 @@ export interface CompleteAnalysisResponse {
   recommendation: FashionRecommendation
 }
 
-// Re-export from other type files
+// Re-export for convenience
 export type { CurrentWeather, ForecastData, WeatherAnalysis } from './weather'
-export type { FashionRecommendation, ClothingLayer } from './fashion'
+export type { FashionRecommendation } from './fashion'
