@@ -2,6 +2,7 @@ import { FashionModule } from '../../types/modules'
 import {
   CurrentWeather,
   WeatherAnalysis,
+  ForecastData,
   FashionRecommendation,
   ClothingLayer,
   AccessoryRecommendation,
@@ -13,7 +14,7 @@ import {
  * 基于天气条件提供个性化的穿搭建议
  */
 export class FashionRecommendationModule implements FashionModule {
-  generateRecommendation(weather: CurrentWeather, analysis: WeatherAnalysis): FashionRecommendation {
+  generateRecommendation(weather: CurrentWeather, analysis: WeatherAnalysis, _forecast?: ForecastData[]): FashionRecommendation {
     const temperature = weather.temperature
     const conditions = weather.description
     const windSpeed = weather.windSpeed

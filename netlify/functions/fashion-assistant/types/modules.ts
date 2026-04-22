@@ -79,7 +79,7 @@ export interface FashionModule {
   /**
    * 生成穿搭建议
    */
-  generateRecommendation(weather: CurrentWeather, analysis: WeatherAnalysis): Promise<FashionRecommendation>
+  generateRecommendation(weather: CurrentWeather, analysis: WeatherAnalysis, forecast?: ForecastData[]): Promise<FashionRecommendation>
 
   /**
    * 建议服装分层

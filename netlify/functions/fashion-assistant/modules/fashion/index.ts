@@ -2,6 +2,7 @@ import { FashionModule } from '../../types/modules'
 import {
   CurrentWeather,
   WeatherAnalysis,
+  ForecastData,
   FashionRecommendation,
   ClothingLayer,
   AccessoryRecommendation,
@@ -16,10 +17,11 @@ const fallbackModule = new FashionRecommendationModule()
 export class DeepSeekFashionModule implements FashionModule {
   async generateRecommendation(
     weather: CurrentWeather,
-    analysis: WeatherAnalysis
+    analysis: WeatherAnalysis,
+    forecast?: ForecastData[]
   ): Promise<FashionRecommendation> {
     try {
-      const userPrompt = buildUserPrompt(weather, analysis)
+      const userPrompt = buildUserPrompt(weather, analysis, forecast)
       const raw = await callDeepSeek(SYSTEM_PROMPT, userPrompt)
 
       const recommendation = this.parseRecommendation(raw)
