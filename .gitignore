@@ -24,6 +24,9 @@ build/
 .DS_Store
 Thumbs.db
 
+# Claude配置
+.claude/
+
 # 临时文件
 *.tmp
 *.temp
@@ -31,7 +34,9 @@ Thumbs.db
 # 类型脚本
 *.tsbuildinfo
 
-# Netlify
+# Netlify - 排除构建输出，但保留TypeScript源代码
 .netlify/functions/*.js
 .netlify/functions/*.map
 .netlify/functions/**/node_modules/
+.netlify/state.json
+.netlify/deploy/
