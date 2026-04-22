@@ -53,7 +53,7 @@ export class FashionAssistantAgent {
       const charts = this.chartModule.generateCharts(forecast)
 
       // 4. 提供穿搭建议
-      const recommendation = this.fashionModule.generateRecommendation(weather, analysis)
+      const recommendation = await this.fashionModule.generateRecommendation(weather, analysis)
 
       // 5. 返回完整结果
       return {

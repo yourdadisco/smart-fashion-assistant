@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npm install *)",
       "Bash(timeout 5 npm list netlify-cli)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'feat: 集成DeepSeek API替换规则引擎，前端显示AI生成标签 *)"
     ]
   }
 }

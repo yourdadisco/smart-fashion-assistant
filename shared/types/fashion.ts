@@ -7,6 +7,7 @@ export interface FashionRecommendation {
   outfits: OutfitSuggestion[] // 完整穿搭建议
   accessories: AccessoryRecommendation[] // 配饰建议
   warnings: string[] // 注意事项
+  isAIGenerated?: boolean // 是否由AI生成
 }
 
 export interface ClothingLayer {

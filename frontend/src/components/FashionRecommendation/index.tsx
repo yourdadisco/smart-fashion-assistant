@@ -81,6 +81,16 @@ export const FashionRecommendationComponent: React.FC<FashionRecommendationProps
         title={
           <span>
             <SkinOutlined /> 穿搭建议
+            {recommendation.isAIGenerated && (
+              <Tag color="purple" style={{ marginLeft: 8, fontWeight: 'bold', fontSize: 12 }}>
+                AI生成
+              </Tag>
+            )}
+            {recommendation.isAIGenerated === false && (
+              <Tag style={{ marginLeft: 8, fontSize: 12 }}>
+                规则引擎
+              </Tag>
+            )}
           </span>
         }
         bordered={false}
@@ -88,6 +98,11 @@ export const FashionRecommendationComponent: React.FC<FashionRecommendationProps
       >
         <Paragraph strong style={{ fontSize: 16 }}>
           {recommendation.summary}
+          {recommendation.isAIGenerated && (
+            <span style={{ fontSize: 12, color: '#8c8c8c', fontWeight: 'normal', marginLeft: 8 }}>
+              — 由AI智能生成
+            </span>
+          )}
         </Paragraph>
         <Descriptions size="small" column={2} style={{ marginTop: 16 }}>
           <Descriptions.Item label="温度范围">
