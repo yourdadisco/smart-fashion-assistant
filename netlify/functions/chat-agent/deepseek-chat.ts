@@ -2,14 +2,14 @@ import axios from 'axios'
 
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions'
 
-interface DeepSeekMessage {
+interface ChatMessage {
   role: 'system' | 'user' | 'assistant'
   content: string
 }
 
 interface DeepSeekRequest {
   model: string
-  messages: DeepSeekMessage[]
+  messages: ChatMessage[]
   temperature: number
   max_tokens: number
   response_format?: { type: 'json_object' }
@@ -27,11 +27,11 @@ interface DeepSeekResponse {
   choices: DeepSeekChoice[]
 }
 
-export async function callDeepSeek(
-  systemPrompt: string,
-  userPrompt: string,
-  maxRetries = 0
-): Promise<Record<string, unknown>> {
+export async function chatWithDeepSeek(
+  messages: ChatMessage[],
+  maxRetries = 1,
+  requireJson = false
+): Promise<string> {
   const apiKey = process.env.DEEPSEEK_API_KEY
   if (!apiKey) {
     throw new Error('DEEPSEEK_API_KEY environment variable is not set')
@@ -39,13 +39,13 @@ export async function callDeepSeek(
 
   const requestBody: DeepSeekRequest = {
     model: 'deepseek-chat',
-    messages: [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: userPrompt }
-    ],
-    temperature: 0.7,
-    max_tokens: 4096,
-    response_format: { type: 'json_object' }
+    messages,
+    temperature: 0.8,
+    max_tokens: 2048
+  }
+
+  if (requireJson) {
+    requestBody.response_format = { type: 'json_object' }
   }
 
   let lastError: Error | null = null
@@ -60,7 +60,7 @@ export async function callDeepSeek(
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${apiKey}`
           },
-          timeout: 25000
+          timeout: 30000
         }
       )
 
@@ -69,7 +69,7 @@ export async function callDeepSeek(
         throw new Error('Empty response from DeepSeek API')
       }
 
-      return JSON.parse(content)
+      return content
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const status = error.response?.status

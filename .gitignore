@@ -32,4 +32,6 @@ Thumbs.db
 *.tsbuildinfo
 
 # Netlify
-.netlify/functions/
+.netlify/functions/*.js
+.netlify/functions/*.map
+.netlify/functions/**/node_modules/
